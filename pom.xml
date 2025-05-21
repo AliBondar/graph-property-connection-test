@@ -26,17 +26,50 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
         </dependency>
+
+        <!-- Oracle JDBC Driver -->
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>19.3.0.0</version>
         </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+
+
+
+        <!-- https://mvnrepository.com/artifact/com.oracle.database.graph/pgx-client -->
+        <dependency>
+            <groupId>com.oracle.database.graph</groupId>
+            <artifactId>pgx-client</artifactId>
+            <version>25.2.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.oracle.database.graph/pgx-api -->
+        <dependency>
+            <groupId>com.oracle.database.graph</groupId>
+            <artifactId>pgx-api</artifactId>
+            <version>25.2.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.oracle.database.graph/pgx-config -->
+        <dependency>
+            <groupId>com.oracle.database.graph</groupId>
+            <artifactId>pgx-config</artifactId>
+            <version>25.2.1</version>
+        </dependency>
+
+
         <dependency>
             <groupId>com.oracle.database.graph</groupId>
             <artifactId>pgql-on-rdbms</artifactId>
@@ -50,8 +83,8 @@
         </dependency>
         <dependency>
             <groupId>com.oracle.database.graph</groupId>
-            <artifactId>opg-pgql-jdbc</artifactId>
-            <version>23.1.0</version>
+            <artifactId>opg-client</artifactId>
+            <version>24.1.0</version>
         </dependency>
     </dependencies>
 

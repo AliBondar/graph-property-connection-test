@@ -1,24 +1,28 @@
 package com.farafan;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
-import oracle.pg.rdbms.pgql.jdbc.PgqlJdbcRdbmsDriver;
+
 
 public class Main {
     public static void main(String[] args) throws SQLException {
 
-        String jdbcUrl = "jdbc:oracle:thin:@//hostname:1521/XE";
-        String username = "username";
-        String password = "password";
+        String jdbcUrl = "jdbc:oracle:thin:@//10.6.150.248:1521/farafan";
+        String username = "graph";
+        String password = "graph1404";
 
-        DriverManager.registerDriver(new PgqlJdbcRdbmsDriver());
+//        DriverManager.registerDriver(new PgqlJdbcRdbmsDriver());
 
         System.out.println("connecting to " + jdbcUrl);
 
         try (Connection conn = DriverManager.getConnection(jdbcUrl, username, password)) {
             System.out.println("Connected to Oracle DB successfully!");
+
+//            PgqlConnection pgqlConn = PgqlConnection.getConnection(conn);
+//            PgqlStatement pgqlStmt = pgqlConn.createStatement();
+//            pgqlStmt.execute("SELECT * FROM MATCH (n) ON my_graph");
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
