@@ -13,11 +13,9 @@ public class PgqlCreate {
 
     public static void main(String[] args) throws SQLException, PgqlException {
 
-//        int idx = 0;
         String jdbcUrl = "jdbc:oracle:thin:@//10.6.150.248:1521/farafan";
         String username = "graph";
         String password = "graph1404";
-//        String graph = args[idx++];
 
         Connection conn = null;
         PgqlStatement pgqlStmt = null;
@@ -35,10 +33,14 @@ public class PgqlCreate {
             pgqlStmt = pgqlConn.createStatement();
 
             // Execute PGQL Query
-            String pgql = "SELECT * FROM MATCH (n) ON my_graph";
+            String pgql = "SELECT e, v, n FROM MATCH (v)-[e]-(n) ON PROBATE_GRAPH LIMIT 100";
 
             // Print the results
             pgqlStmt.execute(pgql);
+
+            while (pgqlStmt.getResultSet().next()) {
+                pgqlStmt.getResultSet().print();
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,5 +1,8 @@
 package com.farafan;
 
+import oracle.pg.rdbms.pgql.PgqlConnection;
+import oracle.pg.rdbms.pgql.PgqlStatement;
+
 import java.sql.*;
 
 
@@ -18,9 +21,9 @@ public class Main {
         try (Connection conn = DriverManager.getConnection(jdbcUrl, username, password)) {
             System.out.println("Connected to Oracle DB successfully!");
 
-//            PgqlConnection pgqlConn = PgqlConnection.getConnection(conn);
-//            PgqlStatement pgqlStmt = pgqlConn.createStatement();
-//            pgqlStmt.execute("SELECT * FROM MATCH (n) ON my_graph");
+            PgqlConnection pgqlConn = PgqlConnection.getConnection(conn);
+            PgqlStatement pgqlStmt = pgqlConn.createStatement();
+            pgqlStmt.execute("SELECT e, v, n FROM MATCH (v)-[e]-(n) ON PROBATE_GRAPH LIMIT 100");
 
 
         } catch (Exception e) {

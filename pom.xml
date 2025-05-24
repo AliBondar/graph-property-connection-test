@@ -1,29 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.farafan</groupId>
-    <artifactId>graph-property-connection-test</artifactId>
-    <version>1.0.0</version>
-    <packaging>war</packaging>
-
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
-
-    <repositories>
-        <repository>
-            <id>spoofax</id>
-            <url>https://artifacts.metaborg.org/content/repositories/releases</url>
-        </repository>
-    </repositories>
-
+    <groupId>com.example.pgql</groupId>
+    <artifactId>pgql-client</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>pgql-client</name>
+    <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -32,12 +15,12 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Oracle JDBC Driver -->
-        <dependency>
-            <groupId>com.oracle.database.jdbc</groupId>
-            <artifactId>ojdbc8</artifactId>
-            <version>19.3.0.0</version>
-        </dependency>
+        <!--     &lt;!&ndash; Oracle JDBC Driver &ndash;&gt;
+            <dependency>
+               <groupId>com.oracle.database.jdbc</groupId>
+               <artifactId>ojdbc8</artifactId>
+               <version>19.3.0.0</version>
+             </dependency>-->
 
         <!-- Logging -->
         <dependency>
@@ -55,48 +38,48 @@
             <version>25.2.1</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.oracle.database.graph/pgx-api -->
-        <dependency>
-            <groupId>com.oracle.database.graph</groupId>
-            <artifactId>pgx-api</artifactId>
-            <version>25.2.1</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.oracle.database.graph/pgx-config -->
-        <dependency>
-            <groupId>com.oracle.database.graph</groupId>
-            <artifactId>pgx-config</artifactId>
-            <version>25.2.1</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>com.oracle.database.graph</groupId>
-            <artifactId>pgql-on-rdbms</artifactId>
-            <version>25.2.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.metaborg</groupId>
-                    <artifactId>org.metaborg.spoofax.core.uber</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
         <dependency>
             <groupId>com.oracle.database.graph</groupId>
             <artifactId>opg-client</artifactId>
             <version>24.1.0</version>
         </dependency>
+
+
+
     </dependencies>
+    <repositories>
+        <repository>
+            <id>spoofax</id>
+            <url>https://artifacts.metaborg.org/content/repositories/releases</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
-                <configuration>
-                    <mainClass>com.mycompany.app.App1</mainClass>
-                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>make-nested-jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <finalName>FileServerFarsiEnglishmobile2</finalName>
+                            <descriptors>
+                                <descriptor>src/assembly/nested-jars.xml</descriptor>
+                            </descriptors>
+                            <archive>
+                                <manifest>
+                                    <mainClass>com.example.pgql.App1</mainClass>
+                                </manifest>
+                            </archive>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
